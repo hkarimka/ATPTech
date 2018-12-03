@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/bids"
+            android:title="Новые заявки" />
+        <item
+            android:id="@+id/myBids"
+            android:title="Принятые заявки" />
+        <item
+            android:id="@+id/addBid"
+            android:title="Добавить заявку" />
+        <item
+            android:id="@+id/tech"
+            android:title="Моя техника" />
+        <item
+            android:id="@+id/changeData"
+            android:title="Изменить данные" />
+    </group>
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/sendError"
+            android:title="Написать нам" />
+    </group>
+    <group
+        android:id="@+id/group3"
+        android:checkableBehavior="single">
+    <item
+        android:id="@+id/logout"
+        android:title="Выйти" />
+    </group>
+
+</menu>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/iv1"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/icon"/>
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/iv1"
+        android:layout_marginTop="10dp"
+        android:textColor="#fff"
+        android:gravity="center"
+        android:textSize="14sp"/>
+    <ImageView
+        android:id="@+id/iv2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@id/ivMap"
+        android:src="@drawable/call"/>
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="12dp"
+        android:layout_alignTop="@+id/iv2"
+        android:layout_toRightOf="@+id/iv2"
+        android:text="Наши телефоны:"
+        android:textColor="#000"
+        android:textSize="15sp" />
+    <ImageView
+        android:id="@+id/iv3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_below="@id/ivMap"
+        android:src="@drawable/internet"/>
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_marginRight="7dp"
+        android:layout_alignTop="@+id/iv3"
+        android:layout_toLeftOf="@+id/iv3"
+        android:gravity="top"
+        android:text="Сайт:"
+        android:textColor="#000"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tvCall1"
+        android:layout_width="130dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="7dp"
+        android:layout_alignRight="@id/tv2"
+        android:layout_below="@id/tv2"
+        android:text="8 (843) 567-54-50"
+        android:textColor="#0077ff"
+        android:textStyle="bold"
+        android:textSize="15sp" />
+    <TextView
+        android:id="@+id/tvSite"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_below="@id/tv3"
+        android:gravity="left"
+        android:layout_toLeftOf="@id/iv3"
+        android:layout_marginRight="10dp"
+        android:text="atp.top-it.ru"
+        android:textColor="#0077ff"
+        android:textStyle="bold"
+        android:textSize="15sp" />
+    <ImageView
+        android:id="@+id/iv4"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/iv3"
+        android:src="@drawable/mail"/>
+    <TextView
+        android:id="@+id/tv6"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_marginRight="7dp"
+        android:layout_alignTop="@+id/iv4"
+        android:layout_toLeftOf="@+id/iv4"
+        android:gravity="top"
+        android:text="E-mail:"
+        android:textColor="#000"
+        android:textSize="15sp" />
+    <TextView
+        android:id="@+id/tvMail"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_below="@id/tv6"
+        android:gravity="left"
+        android:layout_toLeftOf="@id/iv4"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="10dp"
+        android:text="atp116@inbox.ru"
+        android:textColor="#0077ff"
+        android:textStyle="bold"
+        android:textSize="15sp" />
+    <TextView
+        android:id="@+id/tvGeo"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tv1"
+        android:gravity="center"
+        android:text="Халитова, 3"
+        android:textColor="#0077ff"
+        android:textStyle="bold"
+        android:textSize="15sp" />
+    <ImageView
+        android:id="@+id/ivMap"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/tvGeo"
+        android:src="@drawable/map"
+        android:clickable="true"/>
+</RelativeLayout>
