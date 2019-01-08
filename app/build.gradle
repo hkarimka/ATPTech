@@ -5,7 +5,7 @@ android {
         applicationId "com.karim.ATPtech"
         minSdkVersion 15
         targetSdkVersion 27
-        versionCode 5
+        versionCode 7
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

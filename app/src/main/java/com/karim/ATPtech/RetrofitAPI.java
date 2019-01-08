@@ -34,11 +34,6 @@ import retrofit2.http.POST;
 public interface RetrofitAPI {
 
     String BaseURL = "http://46.229.215.232/";
-    String host = "smtp.yandex.ru";
-    String port = "465";
-    String fromEmail = "atp_app@top-it.ru";
-    String toEmail = "atp_app@top-it.ru";
-    String password = "top-atp";
 
     @POST("login.php")
     Call<LoginResponse> auth (@Body LoginRequest body);

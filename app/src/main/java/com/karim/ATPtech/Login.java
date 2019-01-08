@@ -1,42 +1,16 @@
 package com.karim.ATPtech;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
-import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.FirebaseMessagingService;
-import com.google.firebase.messaging.RemoteMessage;
 import com.karim.ATPtech.Model.Request.LoginRequest;
 import com.karim.ATPtech.Model.Response.LoginResponse;
-
-import java.util.Properties;
-
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
-import javax.activation.FileDataSource;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Multipart;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -114,7 +88,8 @@ public class Login extends AppCompatActivity {
         dialog.setMessage("Загрузка...");
         dialog.show();
 
-        LoginRequest lr = new LoginRequest(login, password, token);
+        int version_app = BuildConfig.VERSION_CODE;
+        LoginRequest lr = new LoginRequest(login, password, token, version_app);
 
         Call<LoginResponse> call = null;
         call = service.auth(lr);

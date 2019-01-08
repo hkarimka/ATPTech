@@ -1,6 +1,5 @@
 package com.karim.ATPtech.Model.Request;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class LoginRequest {
@@ -13,6 +12,9 @@ public class LoginRequest {
 
     @SerializedName("token")
     private String token;
+
+    @SerializedName("version_app")
+    int version;
 
     public String getLogin() {
         return login;
@@ -29,9 +31,10 @@ public class LoginRequest {
     public LoginRequest(){}
 
 
-    public LoginRequest(String login, String password, String token){
+    public LoginRequest(String login, String password, String token, int version){
         this.login = login;
         this.password = password;
         this.token = token;
+        this.version = version;
     }
 }

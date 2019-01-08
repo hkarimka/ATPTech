@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.karim.ATPtech.Constants;
 import com.karim.ATPtech.Model.Request.RegisterRequest;
 import com.karim.ATPtech.Model.Response.RegisterResponse;
 import com.karim.ATPtech.R;
@@ -47,7 +48,7 @@ public class SendErrorFragment extends Fragment {
                 else if (text.length() < 10)
                     Toast.makeText(getContext(), "Опишите проблему подробнее", Toast.LENGTH_SHORT).show();
                 else {
-                    SendMessageService sm = new SendMessageService(getContext(), RetrofitAPI.host, RetrofitAPI.port, RetrofitAPI.fromEmail, RetrofitAPI.password, RetrofitAPI.toEmail, new SendMessageService.AsyncResponse(){
+                    SendMessageService sm = new SendMessageService(getContext(), Constants.host, Constants.port, Constants.fromEmail, Constants.password, Constants.toEmail, new SendMessageService.AsyncResponse(){
                         @Override
                         public void processFinish(boolean isMessageSended){
                             if(isMessageSended) {

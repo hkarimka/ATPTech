@@ -1,6 +1,8 @@
 package com.karim.ATPtech;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
@@ -9,7 +11,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
+import android.renderscript.RenderScript;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -58,7 +63,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     public void onMessageReceived(RemoteMessage remoteMessage) {
         try {
             //create notification
-            createNotification(remoteMessage.getNotification().getBody());
+            createNotification(remoteMessage.getData().get("title"), remoteMessage.getData().get("body"));
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -78,7 +83,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
 
     private void storeToken(String token) {
-        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("ATPTech", getApplicationContext().MODE_PRIVATE);
+        SharedPreferences sharedPreferences = this.getSharedPreferences("ATPTech", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("token", token);
         editor.apply();
@@ -111,24 +116,27 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         });
 
     }
-    private void createNotification( String messageBody) {
-        Intent intent = new Intent( getApplicationContext() , MainActivity.class );
+    public void createNotification(String title, String messageBody) {
+        if(title == null) title = "АТП Заявки";
+        Intent intent = new Intent( this , MainActivity.class );
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("isFromNotif", true);
-        PendingIntent resultIntent = PendingIntent.getActivity( getApplicationContext() , 0, intent,
+        PendingIntent resultIntent = PendingIntent.getActivity( this , 0, intent,
                 PendingIntent.FLAG_ONE_SHOT);
 
-        Uri notificationSoundURI = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder mNotificationBuilder = new NotificationCompat.Builder( getApplicationContext())
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("АТП заявки")
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel mChannel = new NotificationChannel("ATPTech", "АТП Заявки", NotificationManager.IMPORTANCE_DEFAULT);
+            notificationManager.createNotificationChannel(mChannel);
+        }
+
+        NotificationCompat.Builder mNotificationBuilder = new NotificationCompat.Builder( this, "ATPTech")
+                .setSmallIcon(R.mipmap.icon)
+                .setContentTitle(title)
                 .setContentText(messageBody)
                 .setAutoCancel(true)
-                .setSound(notificationSoundURI)
+                .setDefaults(Notification.DEFAULT_ALL)
                 .setContentIntent(resultIntent);
-
-        NotificationManager notificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         notificationManager.notify(0, mNotificationBuilder.build());
     }
