@@ -3,7 +3,6 @@ package com.karim.ATPtech;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.Toast;
 
 import java.io.File;
@@ -111,7 +110,6 @@ public class SendMessageService extends AsyncTask<Void,Void,Boolean> {
             return true;
         } catch (Exception ex) {
             progressDialog.dismiss();
-            Log.e("myTag", ex.getMessage());
             ex.printStackTrace();
             return false;
         } finally {
